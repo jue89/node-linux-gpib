@@ -39,7 +39,7 @@ class ibwrtWorker : public Nan::AsyncWorker {
 
 NAN_METHOD( ibwrt ) {
 
-	int ud = ( info[0]->ToInteger() )->Value();
+	int ud = info[0]->ToInteger()->Value();
 
 	v8::Local<v8::String> tmp = info[1]->ToString();
 	int len = tmp->Length();

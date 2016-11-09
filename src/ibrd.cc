@@ -74,7 +74,7 @@ class ibrdWorker : public Nan::AsyncWorker {
 
 NAN_METHOD( ibrd ) {
 
-	int ud = ( info[0]->ToInteger() )->Value();
+	int ud = info[0]->ToInteger()->Value();
 
 	Nan::Callback *callback = new Nan::Callback( info[1].As<v8::Function>() );
 
