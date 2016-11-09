@@ -5,7 +5,8 @@
 			"src/libgpib.cc",
 			"src/ibdev.cc",
 			"src/ibwrt.cc",
-			"src/ibrd.cc"
+			"src/ibrd.cc",
+			"src/ibonl.cc"
 		],
 		"include_dirs": [ "<!(node -e \"require('nan')\")" ],
 		"libraries":
