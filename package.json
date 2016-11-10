@@ -10,6 +10,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "json-gate": "^0.8.23",
     "nan": "^2.4.0"
   }
 }
