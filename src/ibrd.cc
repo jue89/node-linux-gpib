@@ -26,9 +26,7 @@ class ibrdWorker : public Nan::AsyncWorker {
 			buffer = (char *) malloc( len );
 		}
 
-		~ibrdWorker() {
-			free( buffer );
-		}
+		~ibrdWorker() {}
 
 		void Execute() {
 
@@ -39,8 +37,9 @@ class ibrdWorker : public Nan::AsyncWorker {
 				// Sum read bytes
 				bytesRead += ibcntl;
 
-				// If I/O operation is complete, we're done here!
-				if( status & 0x100 ) break;
+				// If END is set, we're done here!
+				// And if ERR is set, break the whole thing.
+				if( status & 0x2000 || status & 0x8000 ) break;
 
 				// Otherwise reallocate another chunk and read further bytes
 				if( ! extendBuffer() ) break;
@@ -66,6 +65,8 @@ class ibrdWorker : public Nan::AsyncWorker {
 				Nan::New<v8::Number>( status ),
 				Nan::New<v8::String>( buffer ).ToLocalChecked()
 			};
+
+			free( buffer );
 
 			callback->Call( 3, argv );
 
