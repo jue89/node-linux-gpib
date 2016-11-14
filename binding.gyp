@@ -6,7 +6,8 @@
 			"src/ibdev.cc",
 			"src/ibwrt.cc",
 			"src/ibrd.cc",
-			"src/ibonl.cc"
+			"src/ibonl.cc",
+			"src/ibloc.cc"
 		],
 		"include_dirs": [ "<!(node -e \"require('nan')\")" ],
 		"libraries":
