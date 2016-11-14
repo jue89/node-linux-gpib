@@ -1,9 +1,16 @@
 {
-  "name": "node-linux-gpib",
-  "version": "0.0.0",
+  "name": "linux-gpib",
+  "version": "1.0.0",
   "description": "Linux GPIB bindings",
   "main": "index.js",
   "author": "Jue <me@jue.yt>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jue89/node-linux-gpib.git"
+  },
   "license": "MIT",
-  "dependencies": {}
+  "dependencies": {
+    "json-gate": "^0.8.23",
+    "nan": "^2.4.0"
+  }
 }
