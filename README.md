@@ -67,8 +67,8 @@ Connects to the device described in ```device``` and returns an instance of Devi
 
 ```device``` has the following properties:
  * ```pad```: Primary GPIB address of the device.
- * ```device```: (optional) Secondary GPIB address.
- * ```timeout```: (optional) Timoeout for I/O operations. Possible values: "TNONE", "T10us", "T30us", "T100us", "T300us", "T1ms", "T3ms", "T10ms", "T30ms", "T100ms", "T300ms", "T1s", "T3s", "T10s", "T30s", "T100s", "T300s", "T1000s". Default: "T300ms".
+ * ```sad```: (optional) Secondary GPIB address.
+ * ```timeout```: (optional) Timeout for I/O operations. Possible values: "TNONE", "T10us", "T30us", "T100us", "T300us", "T1ms", "T3ms", "T10ms", "T30ms", "T100ms", "T300ms", "T1s", "T3s", "T10s", "T30s", "T100s", "T300s", "T1000s". Default: "T300ms".
  * ```send_eoi```: (optional) Assert EOI line with last transmitted byte. Default: true.
  * ```eos```: (optional) end-of-string mode. Default: 0x0.
 
