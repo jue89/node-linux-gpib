@@ -32,7 +32,7 @@ class ibwrtWorker : public Nan::AsyncWorker {
 				Nan::New<v8::Number>( bytesWritten )
 			};
 
-			callback->Call( 3, argv );
+			callback->Call( 3, argv, async_resource );
 
 		}
 };

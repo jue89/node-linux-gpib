@@ -68,7 +68,7 @@ class ibrdWorker : public Nan::AsyncWorker {
 
 			free( buffer );
 
-			callback->Call( 3, argv );
+			callback->Call( 3, argv, async_resource );
 
 		}
 };
