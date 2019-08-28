@@ -42,10 +42,10 @@ NAN_METHOD( ibwrt ) {
 
 	int ud = info[0]->Int32Value(context).FromJust();
 
-	v8::Local<v8::String> tmp = info[1]->ToString(context).ToLocalChecked();
-	int len = tmp->Length();
-	char *data = (char *) malloc( tmp->Length() + 1 );
-	tmp->WriteUtf8( v8::Isolate::GetCurrent(), data, len );
+	v8::Local<v8::String> dataLocal = info[1]->ToString(context).ToLocalChecked();
+	Nan::Utf8String dataStr(dataLocal);
+	int len = dataStr.length();
+	char *data = strdup( *dataStr );
 
 	Nan::Callback *callback = new Nan::Callback( info[2].As<v8::Function>() );
 
