@@ -38,13 +38,14 @@ class ibwrtWorker : public Nan::AsyncWorker {
 };
 
 NAN_METHOD( ibwrt ) {
+	v8::Local<v8::Context> context = info.GetIsolate()->GetCurrentContext();
 
-	int ud = info[0]->ToInteger()->Value();
+	int ud = info[0]->Int32Value(context).FromJust();
 
-	v8::Local<v8::String> tmp = info[1]->ToString();
+	v8::Local<v8::String> tmp = info[1]->ToString(context).ToLocalChecked();
 	int len = tmp->Length();
 	char *data = (char *) malloc( tmp->Length() + 1 );
-	tmp->WriteUtf8( data, len );
+	tmp->WriteUtf8( v8::Isolate::GetCurrent(), data, len );
 
 	Nan::Callback *callback = new Nan::Callback( info[2].As<v8::Function>() );
 
