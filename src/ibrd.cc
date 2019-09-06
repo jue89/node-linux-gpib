@@ -68,14 +68,16 @@ class ibrdWorker : public Nan::AsyncWorker {
 
 			free( buffer );
 
-			callback->Call( 3, argv );
+			callback->Call( 3, argv, async_resource );
 
 		}
 };
 
 NAN_METHOD( ibrd ) {
 
-	int ud = info[0]->ToInteger()->Value();
+	v8::Local<v8::Context> context = info.GetIsolate()->GetCurrentContext();
+
+	int ud = info[0]->Int32Value(context).FromJust();
 
 	Nan::Callback *callback = new Nan::Callback( info[1].As<v8::Function>() );
 

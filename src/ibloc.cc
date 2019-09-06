@@ -2,7 +2,9 @@
 
 NAN_METHOD( ibloc ) {
 
-	int ud = info[0]->ToInteger()->Value();
+	v8::Local<v8::Context> context = info.GetIsolate()->GetCurrentContext();
+
+	int ud = info[0]->Int32Value(context).FromJust();
 
 	int ret = ibloc( ud );
 

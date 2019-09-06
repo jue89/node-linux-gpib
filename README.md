@@ -1,6 +1,6 @@
 # Linux GPIB
 
-The brand new General Purpose Interface Bus (GPIB, IEC-625-Bus), introduced by Hewlet-Packard in the late 1960s, can be accessed via [linux-gpib](http://linux-gpib.sourceforge.net/). This module offers native bindings to the very fundamental read and write methods (```ibrd()``` and ```ibwrt()```). So if you want to access your lab bench devices using JavaScript, this module will be your solution.
+The brand new General Purpose Interface Bus (GPIB, IEC-625-Bus), introduced by Hewlet-Packard in the late 1960s, can be accessed via [linux-gpib](http://linux-gpib.sourceforge.net/). This module offers native bindings to the very fundamental read and write methods (`ibrd()` and `ibwrt()`). So if you want to access your lab bench devices using JavaScript, this module will be your solution.
 
 ## Example
 
@@ -53,7 +53,7 @@ const GPIB = require( 'linux-gpib' );
 const gpib = GPIB( minor );
 ```
 
-Connects to a GPIB adapter available at ```/dev/gpib[minor]``` and returns an instance of GPIB.
+Connects to a GPIB adapter available at `/dev/gpib[minor]` and returns an instance of GPIB.
 
 ### Class: GPIB
 
@@ -63,14 +63,14 @@ Connects to a GPIB adapter available at ```/dev/gpib[minor]``` and returns an in
 const dev = gpib.connect( device );
 ```
 
-Connects to the device described in ```device``` and returns an instance of Device.
+Connects to the device described in `device` and returns an instance of Device.
 
-```device``` has the following properties:
- * ```pad```: Primary GPIB address of the device.
- * ```sad```: (optional) Secondary GPIB address.
- * ```timeout```: (optional) Timeout for I/O operations. Possible values: "TNONE", "T10us", "T30us", "T100us", "T300us", "T1ms", "T3ms", "T10ms", "T30ms", "T100ms", "T300ms", "T1s", "T3s", "T10s", "T30s", "T100s", "T300s", "T1000s". Default: "T300ms".
- * ```send_eoi```: (optional) Assert EOI line with last transmitted byte. Default: true.
- * ```eos```: (optional) end-of-string mode. Default: 0x0.
+`device` has the following properties:
+ * `pad`: Primary GPIB address of the device.
+ * `sad`: (optional) Secondary GPIB address.
+ * `timeout`: (optional) Timeout for I/O operations. Possible values: "TNONE", "T10us", "T30us", "T100us", "T300us", "T1ms", "T3ms", "T10ms", "T30ms", "T100ms", "T300ms", "T1s", "T3s", "T10s", "T30s", "T100s", "T300s", "T1000s". Default: "T300ms".
+ * `send_eoi`: (optional) Assert EOI line with last transmitted byte. Default: true.
+ * `eos`: (optional) end-of-string mode. Default: 0x0.
 
 #### Method: disconnectAll
 
@@ -88,7 +88,7 @@ Disconnects from all connected devices. Returns a promise.
 dev.write( data ).then( ... );
 ```
 
-Sends data to the connected device. Returns a promise. If ```data``` is a string, it is just transmitted. If ```data``` is an array, each item is successively transmitted, starting with the first item.
+Sends data to the connected device. Returns a promise. If `data` is a string, it is just transmitted. If `data` is an array, each item is transmitted successively, starting with the first item.
 
 #### Method: read
 
@@ -96,7 +96,7 @@ Sends data to the connected device. Returns a promise. If ```data``` is a string
 dev.read().then( ... );
 ```
 
-Reads data from the connected device. Returns a promise that will be resolved with the recieved data.
+Reads data from the connected device. Returns a promise that will be resolved with the received data.
 
 #### Method: query
 
@@ -104,7 +104,7 @@ Reads data from the connected device. Returns a promise that will be resolved wi
 dev.query( data ).then( ... );
 ```
 
-Fristly writes data to and then reads data from the connected device. Returns a promise that will be resolved with the recieved data.
+Fristly writes data to and then reads data from the connected device. Returns a promise that will be resolved with the received data.
 
 #### Method: disconnect
 
@@ -112,7 +112,7 @@ Fristly writes data to and then reads data from the connected device. Returns a 
 dev.disconnect( goToLocalMode ).then( ... );
 ```
 
-Disconencts from device. Returns a promise. If ```goToLocalMode``` is true (default), it will bring the device back to local mode before disconnecting.
+Disconencts from device. Returns a promise. If `goToLocalMode` is true (default), it will bring the device back to local mode before disconnecting.
 
 
 ## Requirements
@@ -120,3 +120,10 @@ Disconencts from device. Returns a promise. If ```goToLocalMode``` is true (defa
 Beside a GPIB-capbale measurement instrument you need a GPIB interface that is compatibile with linux-gpib. Furthermore linux-gpib must be installed and the GPIB-device must be fully configured. (Some of them need a firmware downloaded onto the device before beeing used. Google is your friend!)
 
 Node.js must be available in version 4 or later.
+
+## Acknowledgement
+
+Special thanks to:
+
+ * [68ec020](https://github.com/68ec020) for establishing Node.js 12 compatibility.
+
